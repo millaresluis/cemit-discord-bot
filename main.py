@@ -1,10 +1,9 @@
-import discord 
+import discord, pkgutil
 from decouple import config
-from utils.client import bot
-
-def main():
-    token = config('BOT_TOKEN')
-    bot.run(token)
+from client import bot
 
 if __name__ == "__main__":
-    main()
+    token = config('BOT_TOKEN')
+    
+    bot.load_extension("services.membership")
+    bot.run(token)
